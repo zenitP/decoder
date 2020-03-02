@@ -21,7 +21,12 @@ function execute(){
 
 function edwardDecrypt(message){
 
-    message = message.replace(/([a-z])\1/g, '');
-    document.getElementById('result').innerHTML = "<br><textarea rows='10' cols='80'>" + message;
-}
+    for (var i = message.length - 1; i > 0; i--) {
 
+        if (message[i] == message[i - 1]) {
+
+          message = message.slice(0, i - 1) + message.slice(i + 1);
+        }
+    }
+    document.getElementById('result').innerHTML = "<br><textarea rows='10' cols='80' readonly>" + message;
+}
