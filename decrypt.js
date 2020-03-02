@@ -1,3 +1,18 @@
+function validate(){
+
+    var reg = new RegExp(/[^a-z]/g);
+
+    document.getElementById("textarea").addEventListener('input', function() {
+
+        if (reg.test(this.value)) {
+
+            reg.lastIndex = 0;
+            this.value = this.value.replace(reg, '');
+        }
+    }, false)
+}
+
+
 function execute(){
 
     var area = document.getElementById('textarea').value;
@@ -5,13 +20,8 @@ function execute(){
 }
 
 function edwardDecrypt(message){
-  
-      /*
-      or [a-z] as /gi
-      */
 
-      message = message.replace(/[^a-zA-Z]/g, '');
-      message = message.replace(/([a-zA-Z])\1/g, '');
-
-      document.getElementById('result').innerHTML = "<br><textarea rows='10' cols='80'>" + message;
+    message = message.replace(/([a-z])\1/g, '');
+    document.getElementById('result').innerHTML = "<br><textarea rows='10' cols='80'>" + message;
 }
+
